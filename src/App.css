@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, sans-serif;
+}
+
+.container {
+  display: flex;
+  background-color: #f4f7fe;
+  min-height: 100vh;
+  padding: 16px;
+  gap: 20px;
+}
