@@ -17,9 +17,13 @@
   align-items: center;
   gap: 20px;
   border-radius: 16px;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 200px;
   background-color: #ffffff;
+}
+
+.modal-form-wrapper {
+  position: relative;
 }
 
 .modal-form-input {
@@ -27,4 +31,15 @@
   height: 40px;
   border-radius: 8px;
   padding: 0 10px;
+}
+
+.close-icon-wrapper {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.modal-close-icon {
+  width: 24px;
+  height: auto;
 }
