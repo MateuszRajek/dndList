@@ -1,0 +1,10 @@
+.main-section {
+  width: 598px;
+  padding: 16px 8px;
+  border-radius: 16px;
+  background-color: #ecf1fd;
+}
+
+.add-card-btn {
+  color: #88819f;
+}
