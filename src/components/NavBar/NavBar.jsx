@@ -13,14 +13,14 @@ import FaceImage from "../../assets/images/Face.png";
 import "./NavBar.css";
 
 const topNavItems = [
-  { screen: "dashboard", label: "Search", icon: DashboardIcon, activeIcon: DashboardIconActive },
+  { screen: "dashboard", label: "Dashboard", icon: DashboardIcon, activeIcon: DashboardIconActive },
   { screen: "boards", label: "Boards", icon: BoardsIcon, activeIcon: BoardsIconActive },
   { screen: "profile", label: "Profile", icon: ProfileIcon, activeIcon: ProfileIconActive },
   { screen: "search", label: "Search", icon: SearchIcon, activeIcon: SearchIconActive },
 ];
 
 const bottomNavItems = [
-  { screen: "profile", label: "Profile", icon: FaceImage, activeIcon: FaceImage },
+  { screen: "profile", label: "John Doe", icon: FaceImage, activeIcon: FaceImage },
   { screen: "settings", label: "", icon: SettingsIcon, activeIcon: SettingsIconActive },
 ];
 
