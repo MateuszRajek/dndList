@@ -1,0 +1,30 @@
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: 16px;
+  width: 500px;
+  height: 500px;
+  background-color: #ffffff;
+}
+
+.modal-form-input {
+  width: 80%;
+  height: 40px;
+  border-radius: 8px;
+  padding: 0 10px;
+}
