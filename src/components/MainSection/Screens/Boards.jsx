@@ -17,6 +17,12 @@ function Boards() {
     setIsModalOpen(true);
   };
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setInputValue("");
+    setEditableId(null);
+  };
+
   const handleInputChange = (value) => {
     setInputValue(value);
   };
@@ -53,7 +59,7 @@ function Boards() {
       <Button handleClick={handleAddCardClick}>
         <p className="add-card-btn">+ Add a card</p>
       </Button>
-      {isModalOpen && <Modal onSubmit={handleSubmit} inputValue={inputValue} onInputChange={handleInputChange} />}
+      {isModalOpen && <Modal onSubmit={handleSubmit} inputValue={inputValue} onInputChange={handleInputChange} closeModal={closeModal} />}
     </div>
   );
 }
