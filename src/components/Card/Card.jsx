@@ -3,7 +3,7 @@ import DeleteIcon from "../../assets/icons/Trash.png";
 import Button from "../Button/Button";
 import "./Card.css";
 
-function Card({ content, id, onRemoveClick, onEditClick, isEditable }) {
+function Card({ content, id, onRemoveClick, onEditClick }) {
   const handleRemoveClick = () => {
     onRemoveClick(id);
   };
@@ -13,9 +13,7 @@ function Card({ content, id, onRemoveClick, onEditClick, isEditable }) {
   };
   return (
     <div className="card">
-      <div className="card-content" contentEditable={isEditable}>
-        {content}
-      </div>
+      <p className="card-content">{content}</p>
       <div className="buttons-wrapper">
         <Button handleClick={handleEditClick}>
           <img className="card-btn-image" src={EditIcon} alt="edit icon" />
