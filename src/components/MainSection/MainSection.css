@@ -5,6 +5,12 @@
   background-color: #ecf1fd;
 }
 
+.boards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .add-card-btn {
   color: #88819f;
 }

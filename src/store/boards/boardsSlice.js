@@ -1,25 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  boards: [],
+  boardsList: [],
 };
 
 export const boardsSlice = createSlice({
   name: "boards",
   initialState,
   reducers: {
-    addTodo: (state, action) => {
-      state.boards.push(action.payload);
+    addBoard: (state, action) => {
+      state.boardsList.push(action.payload);
     },
-    deleteTodo: (state, action) => {
-      state.boards = state.boards.filter((todo) => todo.id !== action.payload);
+    deleteBoard: (state, action) => {
+      state.boardsList = state.boardsList.filter((board) => board.id !== action.payload);
     },
-    updateTodo: (state, action) => {
-      state.boards = state.boards.map((todo) => (todo.id === action.payload.id ? action.payload : todo));
+    updateBoard: (state, action) => {
+      state.boardsList = state.boardsList.map((board) => (board.id === action.payload.id ? action.payload : board));
     },
   },
 });
 
-export const { addTodo, deleteTodo, updateTodo } = boardsSlice.actions;
+export const { addBoard, deleteBoard, updateBoard } = boardsSlice.actions;
 
 export default boardsSlice.reducer;
