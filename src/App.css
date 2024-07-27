@@ -6,6 +6,10 @@ body {
   font-family: Inter, sans-serif;
 }
 
+html {
+  font-size: 13px;
+}
+
 .container {
   display: flex;
   background-color: #f4f7fe;
