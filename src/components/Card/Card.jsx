@@ -1,26 +1,30 @@
+import React from "react";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import EditIcon from "../../assets/icons/Edit.png";
 import DeleteIcon from "../../assets/icons/Trash.png";
 import Button from "../Button/Button";
 import "./Card.css";
 
-function Card({ content, id, children, onRemoveClick, onEditClick, handleAddCardClick }) {
-  const handleRemoveClick = () => {
-    onRemoveClick(id);
+function Card({ id, content, children, onRemoveClick, onEditClick, handleAddCardClick }) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1,
   };
 
-  const handleEditClick = () => {
-    onEditClick(id, content);
-  };
   return (
-    <>
+    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
       <div className="card">
         <p className="card-content">{content}</p>
         <div className="buttons-wrapper">
-          <Button handleClick={handleEditClick}>
+          <Button handleClick={() => onEditClick(id, content)}>
             <img className="card-btn-image" src={EditIcon} alt="edit icon" />
           </Button>
-          <Button handleClick={handleRemoveClick}>
-            <img className="card-btn-image" src={DeleteIcon} alt="edit icon" />
+          <Button handleClick={() => onRemoveClick(id)}>
+            <img className="card-btn-image" src={DeleteIcon} alt="delete icon" />
           </Button>
         </div>
       </div>
@@ -29,14 +33,8 @@ function Card({ content, id, children, onRemoveClick, onEditClick, handleAddCard
           <span className="add-card-btn">+ Add a card</span>
         </Button>
       </div>
-      {children &&
-        children.length > 0 &&
-        children.map(({ id: childId, content: childContent, children: childChildren }) => (
-          <div style={{ marginLeft: 20 }} key={childId}>
-            <Card id={childId} content={childContent} children={childChildren} onRemoveClick={onRemoveClick} onEditClick={onEditClick} handleAddCardClick={handleAddCardClick} />
-          </div>
-        ))}
-    </>
+      {children}
+    </div>
   );
 }
 

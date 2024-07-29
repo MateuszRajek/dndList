@@ -25,3 +25,7 @@
   line-height: 100%;
   color: #001c39;
 }
+
+.card-child {
+  margin-left: 20px;
+}

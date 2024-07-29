@@ -1,18 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { arrayMove } from "@dnd-kit/sortable";
 
 const initialState = {
-  boardsList: [
-    {
-      id: "1",
-      content: "Board 1",
-      children: [
-        { id: "4", content: "Card 1", children: [{ id: "6", content: "Task 1", children: [] }] },
-        { id: "5", content: "Card 2", children: [] },
-      ],
-    },
-    { id: "2", content: "Board 2", children: [] },
-    { id: "3", content: "Board 3", children: [] },
-  ],
+  boardsList: [],
+};
+
+const moveItem = (items, activeId, overId) => {
+  const oldIndex = items.findIndex((item) => item.id === activeId);
+  const newIndex = items.findIndex((item) => item.id === overId);
+
+  if (oldIndex !== -1 && newIndex !== -1) {
+    return arrayMove(items, oldIndex, newIndex);
+  }
+
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].children) {
+      const newChildren = moveItem(items[i].children, activeId, overId);
+      if (newChildren !== items[i].children) {
+        return [...items.slice(0, i), { ...items[i], children: newChildren }, ...items.slice(i + 1)];
+      }
+    }
+  }
+
+  return items;
 };
 
 export const boardsSlice = createSlice({
@@ -67,10 +77,14 @@ export const boardsSlice = createSlice({
 
       state.boardsList = updateNested(state.boardsList, action.payload);
     },
+    moveBoard: (state, action) => {
+      const { activeId, overId } = action.payload;
+      state.boardsList = moveItem(state.boardsList, activeId, overId);
+    },
   },
 });
 
-export const { addBoard, deleteBoard, updateBoard } = boardsSlice.actions;
+export const { addBoard, deleteBoard, updateBoard, moveBoard } = boardsSlice.actions;
 
 export default boardsSlice.reducer;
 
