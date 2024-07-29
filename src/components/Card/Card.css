@@ -1,0 +1,31 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  align-items: center;
+  padding: 8px 16px 8px 32px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.buttons-wrapper {
+  display: flex;
+}
+
+.card-btn-image {
+  width: 16px;
+  height: auto;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  line-height: 100%;
+  color: #001c39;
+}
+
+.card-child {
+  margin-left: 20px;
+}
