@@ -12,8 +12,16 @@ html {
 
 .container {
   display: flex;
+  flex-direction: column;
   background-color: #f4f7fe;
   min-height: 100vh;
+  min-width: 240px;
   padding: 16px;
   gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
 }

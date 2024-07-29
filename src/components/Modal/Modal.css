@@ -17,7 +17,7 @@
   align-items: center;
   gap: 20px;
   border-radius: 16px;
-  width: 400px;
+  width: 260px;
   height: 200px;
   background-color: #ffffff;
 }
@@ -42,4 +42,10 @@
 .modal-close-icon {
   width: 24px;
   height: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-form {
+    width: 400px;
+  }
 }

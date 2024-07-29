@@ -1,5 +1,6 @@
 .main-section {
-  width: 598px;
+  width: auto;
+  min-height: 500px;
   padding: 16px 8px;
   border-radius: 16px;
   background-color: #ecf1fd;
@@ -13,4 +14,10 @@
 .add-card-btn {
   color: #88819f;
   font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  .main-section {
+    width: 598px;
+  }
 }

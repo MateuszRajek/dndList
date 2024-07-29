@@ -89,7 +89,7 @@ function Boards() {
   );
 
   return (
-    <div>
+    <>
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd} modifiers={[restrictToVerticalAxis]}>
         <SortableContext items={flattenBoards(boardsList).map((board) => board.id)} strategy={verticalListSortingStrategy}>
           <div className="boards-wrapper">{boardsList.map(renderBoard)}</div>
@@ -99,7 +99,7 @@ function Boards() {
         <p className="add-card-btn">+ Add a card</p>
       </Button>
       {isModalOpen && <Modal onSubmit={handleSubmit} inputValue={inputValue} onInputChange={handleInputChange} closeModal={closeModal} />}
-    </div>
+    </>
   );
 }
 
