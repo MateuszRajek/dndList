@@ -10,10 +10,14 @@ function Boards() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [editableId, setEditableId] = useState(null);
+  const [parentId, setParentId] = useState(null);
   const boardsList = useSelector((state) => state.boards.boardsList);
   const dispatch = useDispatch();
 
-  const handleAddCardClick = () => {
+  const handleAddCardClick = (id) => {
+    if (id) {
+      setParentId(id);
+    }
     setIsModalOpen(true);
   };
 
@@ -33,7 +37,8 @@ function Boards() {
       dispatch(updateBoard({ content: inputValue, id: editableId }));
       setEditableId(null);
     } else {
-      dispatch(addBoard({ content: inputValue, id: uuidv4() }));
+      dispatch(addBoard({ parentId, newBoard: { content: inputValue, id: uuidv4(), children: [] } }));
+      setParentId(null);
     }
     setInputValue("");
     setIsModalOpen(false);
@@ -52,11 +57,11 @@ function Boards() {
   return (
     <div>
       <div className="boards-wrapper">
-        {boardsList.map(({ id, content }) => (
-          <Card key={id} id={id} content={content} onRemoveClick={handleRemoveCardClick} onEditClick={handleOnEditCardClick} is />
+        {boardsList.map(({ id, content, children }) => (
+          <Card key={id} id={id} content={content} children={children} onRemoveClick={handleRemoveCardClick} onEditClick={handleOnEditCardClick} handleAddCardClick={handleAddCardClick} />
         ))}
       </div>
-      <Button handleClick={handleAddCardClick}>
+      <Button handleClick={() => handleAddCardClick()}>
         <p className="add-card-btn">+ Add a card</p>
       </Button>
       {isModalOpen && <Modal onSubmit={handleSubmit} inputValue={inputValue} onInputChange={handleInputChange} closeModal={closeModal} />}
@@ -65,3 +70,4 @@ function Boards() {
 }
 
 export default Boards;
+
